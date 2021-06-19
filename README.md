@@ -25,7 +25,7 @@ samples, guidance on mobile development, and a full API reference.
 
 4、flutter 中页面定义是采用下划线方式，如 main_page.dart，任何语句需要有结束符号。
 
-5、页面中 http 的请求采用[Dio 库](https://github.com/flutterchina/dio)，具体用法：
+5、页面中 http 的请求采用[Dio 库](https://github.com/flutterchina/dio)，请求外部网站要拦截请求头，具体用法：
 
 ```dart
   import 'package:dio/dio.dart';
@@ -47,14 +47,19 @@ samples, guidance on mobile development, and a full API reference.
         });
   });
 
+  var dio = new Dio();
+  dio.options.headers = httpHeader;
 ```
 
 6、用到的 Widget 组件：
+
 底部导航栏：BottomNavigatorBarItem
 
 输入框：TextField
 
 ```dart
+ // 拿输入框的值，typeController.text.toString()
+TextEditingController typeController = TextEditingController();
 TextField(
     controller: TextEditingController(),
     decoration: (InputDecoration(

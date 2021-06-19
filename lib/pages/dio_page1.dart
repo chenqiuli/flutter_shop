@@ -1,4 +1,4 @@
-// 使用Dio动态展示接口数据到页面上
+// 使用Dio动态展示接口数据到页面上，服务器是express服务器
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // 为了拿输入框的值，typeController.text.toString()
+  // 拿输入框的值，typeController.text.toString()
   TextEditingController typeController = TextEditingController();
   String showText = '欢迎你来到美好人间';
 
