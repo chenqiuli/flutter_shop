@@ -1,25 +1,12 @@
-# fluttershopapp
-
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 # 项目知识点：
 
 1、statelessWidget statefulWidget(initSate 初始化状态、setState({})更改状态)
 
-2、pubspec.yaml -> 包管理文件，类似 npm 的 package.json
+2、pubspec.yaml -> 包管理文件，类似 npm 的 package.json，安装依赖会默认读取 yaml
+
+```dart
+flutter packages get
+```
 
 3、material 风格与 cupertino 风格可以同时使用
 
@@ -49,6 +36,8 @@ samples, guidance on mobile development, and a full API reference.
 
   var dio = new Dio();
   dio.options.headers = httpHeader;
+
+  dio.options.contentType = "application/x-www-urlencoded"
 ```
 
 6、用到的 Widget 组件：
@@ -82,3 +71,7 @@ TextField(
         builder: (context) => AlertDialog(title: Text('美女类型不能为空')),
       );
 ```
+
+FutureBuilder
+
+7、轮播图插件:flutter_swiper
