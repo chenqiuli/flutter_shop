@@ -74,4 +74,6 @@ TextField(
 
 FutureBuilder
 
-7、轮播图插件:flutter_swiper
+7、轮播图插件: [flutter_swiper](https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md)
+
+8、屏蔽适配方案：[flutter_screenUtil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
