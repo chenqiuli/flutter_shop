@@ -72,7 +72,9 @@ TextField(
       );
 ```
 
-FutureBuilder
+FutureBuilder：可调用接口的组件
+
+InkWell：可用于点击跳转的 GridView 组件
 
 7、轮播图插件: [flutter_swiper](https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md)
 
