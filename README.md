@@ -74,8 +74,12 @@ TextField(
 
 FutureBuilder：可调用接口的组件
 
-InkWell：可用于点击跳转的 GridView 组件
+InkWell：可用于点击跳转的组件
+
+SingleChildScrollView：防止页面溢出组件
 
 7、轮播图插件: [flutter_swiper](https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md)
 
 8、屏蔽适配方案：[flutter_screenUtil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
+
+9、保持页面状态

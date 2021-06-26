@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(750, 1334),
       builder: () => Container(
         child: MaterialApp(
-          title: '百姓生活+',
+          title: '眼镜App',
           // 去掉页面右上角的debug模式
           debugShowCheckedModeBanner: false,
           // 设置整体风格主题，包括颜色和字体
