@@ -31,7 +31,7 @@ class _IndexPageState extends State<IndexPage> {
     ),
   ];
 
-  final List bottomBodies = [
+  final List<Widget> bottomBodies = [
     HomePage(),
     CategoryPage(),
     CartPage(),
@@ -68,7 +68,10 @@ class _IndexPageState extends State<IndexPage> {
           });
         },
       ),
-      body: currentPage,
+      body: IndexedStack(
+        index: currentIndex,
+        children: bottomBodies,
+      ),
     );
   }
 }

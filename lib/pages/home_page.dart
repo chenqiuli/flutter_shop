@@ -11,7 +11,17 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    print("-----------------------");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,6 +31,7 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
+                // 没有被SingleChildScrollView包裹，SwiperDiy要用Flexible包裹
                 // Flexible(
                 //   child: SwiperDiy(swiperList: swiperList),
                 // ),
@@ -28,6 +39,9 @@ class _HomePageState extends State<HomePage> {
                 TopNavigator(navigatorList: navigatorList),
                 AdBanner(adPicture: advertiseList),
                 Recommend(recommendList: recommendList),
+                HotGoods(
+                  hotList: hotList,
+                ),
               ],
             ),
           ),
@@ -89,7 +103,7 @@ class TopNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(360),
+      height: ScreenUtil().setHeight(340),
       padding: EdgeInsets.all(3.0),
       child: GridView.count(
         crossAxisCount: 4,
@@ -211,6 +225,89 @@ class Recommend extends StatelessWidget {
         children: <Widget>[
           _titleWidget(),
           _listWidget(),
+        ],
+      ),
+    );
+  }
+}
+
+// 火爆专区组件
+class HotGoods extends StatelessWidget {
+  final List hotList;
+  HotGoods({Key key, this.hotList}) : super(key: key);
+
+  Widget _hotTitle() {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      child: Text(
+        '火爆专区',
+        style: TextStyle(
+          fontSize: ScreenUtil().setSp(26),
+        ),
+      ),
+      alignment: Alignment.center,
+    );
+  }
+
+  Widget _itemList(item) {
+    return Container(
+      width: ScreenUtil().setWidth(365),
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Image.network(
+            item['image'],
+            width: ScreenUtil().setWidth(355),
+          ),
+          Text(
+            item['desc'],
+            maxLines: 2,
+          ),
+          Row(
+            children: <Widget>[
+              Text(
+                '￥${item['price']}',
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: ScreenUtil().setSp(24),
+                ),
+              ),
+              Expanded(child: Text('')),
+              Text(
+                '￥${item['mallPrice']}',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ScreenUtil().setSp(24),
+                  decoration: TextDecoration.lineThrough,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _allList() {
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.fromLTRB(3.0, 3.0, 3.0, 3.0),
+      child: Wrap(
+        spacing: 2,
+        children: hotList.map((item) {
+          return _itemList(item);
+        }).toList(),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          _hotTitle(),
+          _allList(),
         ],
       ),
     );
