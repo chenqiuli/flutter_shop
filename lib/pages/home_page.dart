@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    print("-----------------------");
+    print("-------打印首页数据--------");
     super.initState();
   }
 
@@ -106,6 +106,8 @@ class TopNavigator extends StatelessWidget {
       height: ScreenUtil().setHeight(340),
       padding: EdgeInsets.all(3.0),
       child: GridView.count(
+        // 禁止滑动
+        physics: NeverScrollableScrollPhysics(),
         crossAxisCount: 4,
         padding: EdgeInsets.all(4.0),
         children: navigatorList.map((item) {
