@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import './pages/index_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provide/provide.dart';
+import './provide/counter.dart';
+import './provide/right_category_nav.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // 注册provide
+  var counter = Counter();
+  var providers = Providers();
+  var rightCategoryNavProvide = RightCategoryNavProvide();
+  providers
+    ..provide(Provider<Counter>.value(counter))
+    ..provide(Provider<RightCategoryNavProvide>.value(rightCategoryNavProvide));
+  runApp(ProviderNode(
+    child: MyApp(),
+    providers: providers,
+  ));
+}
 
 class MyApp extends StatelessWidget {
   @override

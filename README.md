@@ -82,4 +82,73 @@ SingleChildScrollView：防止页面溢出组件
 
 8、屏蔽适配方案：[flutter_screenUtil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
 
-9、保持页面状态
+9、保持页面状态：AutomaticKeepAliveClientMixin
+
+10、页面之间通信：[flutter-provide](https://github.com/google/flutter-provide)
+
+```dart
+1、先编写provide文件
+import 'package:flutter/material.dart';
+// ChangeNotifier 不管在哪个页面都能取到这个provide的值
+// notifyListeners() 监听事件刷新
+class Counter with ChangeNotifier {
+  int value = 0;
+
+  increment() {
+    value++;
+    notifyListeners();
+  }
+}
+
+2、main文件全局注册provide
+import 'package:provide/provide.dart';
+import './provide/counter.dart';
+
+void main() {
+  var counter = Counter();
+  var providers = Providers();
+  providers..provide(Provider<Counter>.value(counter));
+  runApp(ProviderNode(
+    child: MyApp(),
+    providers: providers,
+  ));
+}
+
+3、取provide的数据
+import 'package:flutter/material.dart';
+import 'package:provide/provide.dart';
+import '../provide/counter.dart';
+
+class MemberPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Provide<Counter>(
+          builder: (context, child, data) {
+            return Text('${data.value}');
+          },
+        ),
+      ),
+    );
+  }
+}
+
+4、修改provide的数据，通过调用函数
+import 'package:flutter/material.dart';
+import 'package:provide/provide.dart';
+import '../provide/counter.dart';
+class Button extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: RaisedButton(
+        onPressed: () {
+          Provide.value<Counter>(context).increment();
+        },
+        child: Text('点击改变数字'),
+      ),
+    );
+  }
+}
+```
