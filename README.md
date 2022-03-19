@@ -1,10 +1,11 @@
 # 项目知识点：
 
-1、statelessWidget statefulWidget(initSate 初始化状态、setState({})更改状态)
+1、statelessWidget statefulWidget(initState 初始化状态、setState({})更改状态)
 
 2、pubspec.yaml -> 包管理文件，类似 npm 的 package.json，安装依赖会默认读取 yaml
 
 ```dart
+安装依赖：
 flutter packages get
 ```
 
@@ -16,7 +17,7 @@ flutter packages get
 
 ```dart
   import 'package:dio/dio.dart';
-  // Future对象是调用的时候可以使用then去回调
+  // Future对象是调用的时候可以使用then去回调，类似ES6的Promise
   Future getHttp(String text) async {
     try {
       Response response;
@@ -74,13 +75,13 @@ TextField(
 
 FutureBuilder：可调用接口的组件
 
-InkWell：可用于点击跳转的组件
+InkWell：可用于点击跳转的组件，一般包裹在布局组件的外面
 
-SingleChildScrollView：防止页面溢出组件
+SingleChildScrollView：防止页面溢出组件，只用于页面 Column 排列
 
 7、轮播图插件: [flutter_swiper](https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md)
 
-8、屏蔽适配方案：[flutter_screenUtil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
+8、屏幕适配方案：[flutter_screenUtil](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)
 
 9、保持页面状态：AutomaticKeepAliveClientMixin
 
